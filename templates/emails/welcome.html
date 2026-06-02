@@ -1,2 +1,203 @@
-<h2>Bem-vindo ao Zakar</h2>
-<p>Olá {{ user.first_name|default:user.email }}, sua conta foi criada.</p>
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Zakar — Bem-vindo</title>
+  
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+
+  <style>
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      .email-bg    { background-color: #0f1117 !important; }
+      .card-bg     { background-color: #1a1d27 !important; border-color: #2d3142 !important; }
+      .heading-c   { color: #ffffff !important; }
+      .body-c      { color: #a0a6b6 !important; }
+      .secure-box  { background-color: #1e2235 !important; border-color: #2a2e42 !important; }
+      .secure-text { color: #8b8fa3 !important; }
+      .footer-bg   { background-color: #13151d !important; }
+      .footer-text { color: #4a4e5e !important; }
+      .divider     { border-color: #2a2e42 !important; }
+      .cta-btn     { background-color: #6366f1 !important; } /* Darker violet for contrast in dark mode */
+    }
+
+    /* Mobile */
+    @media only screen and (max-width: 620px) {
+      .email-bg    { padding: 16px 8px !important; }
+      .card-bg     { border-radius: 16px !important; }
+      .pad-header  { padding: 32px 24px 20px !important; }
+      .pad-body    { padding: 0 24px !important; }
+      .pad-cta     { padding: 24px 24px !important; }
+      .pad-footer  { padding: 20px 24px !important; }
+      .heading-fs  { font-size: 22px !important; }
+      .body-fs     { font-size: 14px !important; }
+    }
+  </style>
+</head>
+
+<body style="margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+
+  <!-- Background Wrapper -->
+  <table class="email-bg" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f0f2f5;padding:40px 16px;">
+    <tr>
+      <td align="center" valign="top">
+
+        <!-- Main Card -->
+        <table class="card-bg" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="max-width:560px;background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #e5e8ee;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+          
+          <!-- Top Brand Gradient Accent -->
+          <tr>
+            <td style="height:5px;background:linear-gradient(90deg, #3b82f6, #6366f1, #8b5cf6, #34d399);font-size:0;line-height:0;">&nbsp;</td>
+          </tr>
+
+          <!-- Header / Logo -->
+          <tr>
+            <td class="pad-header" style="padding:40px 40px 24px 40px;text-align:center;">
+              <table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 auto;">
+                <tr>
+                  <td valign="middle" style="padding-right:10px;">
+                    <!-- Ícone Z estilizado para a marca Zakar -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M4 4h16L4 20h16" stroke="url(#zakar-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <defs>
+                        <linearGradient id="zakar-grad" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#3b82f6"/>
+                          <stop offset="0.5" stop-color="#8b5cf6"/>
+                          <stop offset="1" stop-color="#34d399"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </td>
+                  <td valign="middle">
+                    <span style="font-size:18px;font-weight:700;letter-spacing:2px;color:#111827;">ZAKAR</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td class="pad-body" style="padding:0 40px;">
+              <table class="divider" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-top:1px solid #e5e8ee;">
+                <tr><td style="font-size:0;line-height:0;height:1px;">&nbsp;</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Heading -->
+          <tr>
+            <td class="pad-body" style="padding:28px 40px 0 40px;text-align:center;">
+              <h1 class="heading-fs heading-c" style="margin:0;font-size:24px;line-height:1.3;font-weight:700;color:#111827;">
+                Bem-vindo ao Zakar
+              </h1>
+            </td>
+          </tr>
+
+          <!-- Body Text -->
+          <tr>
+            <td class="pad-body" style="padding:16px 40px 0 40px;text-align:center;">
+              <p class="body-fs body-c" style="margin:0;font-size:15px;line-height:1.65;color:#4b5563;">
+                Olá <strong style="color:#111827;">{{ user.first_name|default:user.email }}</strong>, sua conta foi criada com sucesso.
+              </p>
+              <p class="body-fs body-c" style="margin:14px 0 0 0;font-size:15px;line-height:1.65;color:#4b5563;">
+                Você agora tem acesso à nossa plataforma. Clique no botão abaixo para explorar e começar a usar o Zakar.
+              </p>
+            </td>
+          </tr>
+
+          <!-- CTA Button Area -->
+          <tr>
+            <td class="pad-cta" align="center" style="padding:28px 40px;">
+              <!-- VML for Outlook -->
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ platform_url }}" style="height:50px;v-text-anchor:middle;width:260px;" arcsize="25%" strokecolor="#4f46e5" fillcolor="#4f46e5">
+                <w:anchorlock/>
+                <center style="color:#ffffff;font-family:sans-serif;font-size:15px;font-weight:600;">Acessar minha conta</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-->
+              <table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 auto;">
+                <tr>
+                  <td align="center" style="border-radius:12px;background:linear-gradient(135deg, #4f46e5, #6366f1);">
+                    <a class="cta-btn" href="{{ platform_url }}" target="_blank" style="display:inline-block;padding:14px 32px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:12px;">
+                      Acessar minha conta
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- Support Notice -->
+          <tr>
+            <td class="pad-body" style="padding:0 40px;">
+              <table class="secure-box" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f8f9fc;border:1px solid #eef0f4;border-radius:10px;">
+                <tr>
+                  <td style="padding:14px 18px;">
+                    <table cellpadding="0" cellspacing="0" role="presentation">
+                      <tr>
+                        <td valign="top" style="padding-right:10px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" style="margin-top:1px;">
+                            <circle cx="12" cy="12" r="10" stroke="#8b5cf6" stroke-width="1.5"/>
+                            <path d="M12 16v-4m0-4h.01" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+                          </svg>
+                        </td>
+                        <td>
+                          <p class="secure-text" style="margin:0;font-size:13px;line-height:1.5;color:#64748b;">
+                            <strong style="color:#111827;">Precisa de ajuda?</strong> Se você não criou esta conta, por favor ignore este e-mail. Caso tenha dúvidas, nossa equipe de suporte está à disposição.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding:32px 40px 0 40px;">
+              <table class="divider" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-top:1px solid #e5e8ee;">
+                <tr><td style="font-size:0;line-height:0;height:1px;">&nbsp;</td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="footer-bg pad-footer" style="padding:24px 40px 32px 40px;text-align:center;background:#fafbfd;">
+              <p class="footer-text" style="margin:0;font-size:11px;line-height:1.6;color:#9ca3b8;">
+                Este é um e-mail automático. Não responda esta mensagem.<br>
+                © {% now "Y" %} Zakar. Todos os direitos reservados.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /Main Card -->
+
+      </td>
+    </tr>
+  </table>
+  <!-- /Background Wrapper -->
+
+</body>
+</html>

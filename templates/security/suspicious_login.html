@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Zakar — Alerta de Segurança</title>
+  <style>
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    body { margin: 0; padding: 0; width: 100% !important; }
+    @media (prefers-color-scheme: dark) {
+      .email-bg, .card-bg, .heading-c, .body-c, .data-label, .data-val, .alert-box, .footer-bg, .footer-text, .divider { 
+        background-color: #0f1117 !important; color: #a0a6b6 !important; border-color: #2d3142 !important; 
+      }
+      .card-bg { background-color: #1a1d27 !important; }
+      .alert-box { background-color: #2a1f1f !important; border-color: #5a2d2d !important; }
+      .data-val { color: #ffffff !important; }
+    }
+    @media only screen and (max-width: 620px) {
+      .email-bg { padding: 16px 8px !important; }
+      .pad-body { padding: 0 20px !important; }
+      .heading-fs { font-size: 20px !important; }
+      .mobile-stack { width: 100% !important; display: block !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+  <table class="email-bg" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#f0f2f5;padding:40px 16px;">
+    <tr><td align="center" valign="top">
+      <table class="card-bg" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="max-width:560px;background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #e5e8ee;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+        
+        <!-- Top Accent (Vermelho para alerta) -->
+        <tr><td style="height:5px;background:linear-gradient(90deg, #ef4444, #f97316);font-size:0;line-height:0;">&nbsp;</td></tr>
+
+        <!-- Header -->
+        <tr><td class="pad-body" style="padding:32px 40px 0;text-align:center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" style="margin-bottom:12px;">
+            <path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h1 class="heading-fs heading-c" style="margin:0;font-size:22px;font-weight:700;color:#111827;">Atividade Suspeita Detectada</h1>
+        </td></tr>
+
+        <!-- Body -->
+        <tr><td class="pad-body" style="padding:16px 40px 0;text-align:center;">
+          <p class="body-c" style="margin:0;font-size:15px;line-height:1.6;color:#4b5563;">
+            Olá <strong style="color:#111827;">{{ user.first_name }}</strong>, detectamos uma tentativa de login incomum na sua conta. Se foi você, pode ignorar este aviso. Caso contrário, recomendamos alterar sua senha.
+          </p>
+        </td></tr>
+
+        <!-- Data Table -->
+        <tr><td class="pad-body" style="padding:24px 40px;">
+          <table class="alert-box" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background:#fef2f2;border:1px solid #fee2e2;border-radius:12px;overflow:hidden;">
+            <tr><td style="padding:16px 20px;">
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                <!-- Row 1 -->
+                <tr>
+                  <td class="data-label" style="padding:6px 0;font-size:13px;color:#64748b;width:35%;">Data e Hora</td>
+                  <td class="data-val" style="padding:6px 0;font-size:13px;font-weight:600;color:#111827;">{{ login.date_time }}</td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                  <td class="data-label" style="padding:6px 0;font-size:13px;color:#64748b;">Endereço IP</td>
+                  <td class="data-val" style="padding:6px 0;font-size:13px;font-weight:600;color:#111827;font-family:monospace;">{{ login.ip_address }}</td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                  <td class="data-label" style="padding:6px 0;font-size:13px;color:#64748b;">Localização</td>
+                  <td class="data-val" style="padding:6px 0;font-size:13px;font-weight:600;color:#111827;">{{ login.location }}</td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                  <td class="data-label" style="padding:6px 0;font-size:13px;color:#64748b;">Dispositivo</td>
+                  <td class="data-val" style="padding:6px 0;font-size:13px;font-weight:600;color:#111827;">{{ login.device }}</td>
+                </tr>
+              </table>
+            </td></tr>
+          </table>
+        </td></tr>
+
+        <!-- CTA Button -->
+        <tr><td align="center" style="padding:8px 40px 28px;">
+          <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{ password_reset_url }}" style="height:50px;v-text-anchor:middle;width:260px;" arcsize="25%" strokecolor="#111827" fillcolor="#111827"><w:anchorlock/><center style="color:#ffffff;font-family:sans-serif;font-size:15px;font-weight:600;">Alterar Minha Senha</center></v:roundrect><![endif]-->
+          <!--[if !mso]><!-->
+          <table cellpadding="0" cellspacing="0" role="presentation" style="margin:0 auto;"><tr><td align="center" style="border-radius:12px;background:#111827;">
+            <a href="{{ password_reset_url }}" target="_blank" style="display:inline-block;padding:14px 32px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:12px;">Alterar Minha Senha</a>
+          </td></tr></table>
+          <!--<![endif]-->
+        </td></tr>
+
+        <!-- Footer -->
+        <tr><td style="padding:24px 40px 0;"><table class="divider" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-top:1px solid #e5e8ee;"><tr><td>&nbsp;</td></tr></table></td></tr>
+        <tr><td class="footer-bg pad-footer" style="padding:20px 40px 28px;text-align:center;background:#fafbfd;">
+          <p class="footer-text" style="margin:0;font-size:11px;line-height:1.6;color:#9ca3b8;">Este é um e-mail automático do Zakar. Não responda esta mensagem.</p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
