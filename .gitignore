@@ -1,0 +1,112 @@
+# ------------------------------
+# Django
+# ------------------------------
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+__pycache__/
+
+local_settings.py
+
+db.sqlite3
+db.sqlite3-journal
+
+media/
+staticfiles/
+
+# ------------------------------
+# Environment
+# ------------------------------
+.env
+.env.*
+.venv/
+venv/
+env/
+ENV/
+
+.python-version
+
+# ------------------------------
+# IDE
+# ------------------------------
+.vscode/
+.idea/
+
+# ------------------------------
+# Python
+# ------------------------------
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+share/python-wheels/
+wheels/
+
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ------------------------------
+# Coverage
+# ------------------------------
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ------------------------------
+# Logs
+# ------------------------------
+logs/
+*.log
+
+# ------------------------------
+# Celery
+# ------------------------------
+celerybeat-schedule
+celerybeat.pid
+
+# ------------------------------
+# Cache
+# ------------------------------
+.cache/
+.pyre/
+.pytype/
+.tox/
+.nox/
+
+# ------------------------------
+# OS
+# ------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# Generated Documentation
+# ------------------------------
+schema.yml
+schema.json
+
+# ------------------------------
+# Runtime
+# ------------------------------
+*.pid
+*.sock
+
+# ------------------------------
+# Backups
+# ------------------------------
+*.bak
+*.old
+*.orig

@@ -1,0 +1,13 @@
+Novo acesso detectado
+
+Olá {{ user.first_name|default:user.email }},
+
+Detectamos um novo acesso à sua conta.
+
+IP: {{ ctx.ip }}
+Navegador: {{ ctx.browser }}
+Sistema: {{ ctx.os }}
+Dispositivo: {{ ctx.device }}
+Tenant: {{ tenant.nome|default:"Plataforma" }}
+
+Se foi você, nenhuma ação é necessária.

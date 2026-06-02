@@ -1,0 +1,1 @@
+Olá {{ user.first_name|default:user.email }}, sua conta foi criada.

@@ -1,0 +1,11 @@
+<h2>Novo acesso detectado</h2>
+<p>Olá {{ user.first_name|default:user.email }},</p>
+<p>Detectamos um novo acesso à sua conta.</p>
+<ul>
+    <li><strong>IP:</strong> {{ ctx.ip }}</li>
+    <li><strong>Navegador:</strong> {{ ctx.browser }}</li>
+    <li><strong>Sistema:</strong> {{ ctx.os }}</li>
+    <li><strong>Dispositivo:</strong> {{ ctx.device }}</li>
+    <li><strong>Tenant:</strong> {{ tenant.nome|default:"Plataforma" }}</li>
+</ul>
+<p>Se foi você, nenhuma ação é necessária.</p>
